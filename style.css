@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+p,
+h1,
+h2,
+h3 {
+    margin: 0;
+    width: fit-content;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    background-color: #01131E;
+    user-select: none;
+}
+
+.topnav {
+    background-color: #1A3140;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 20px 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.nav-title {
+    color: #FFFFFF;
+    text-align: right;
+}
+
+.subtitle{
+    font-size: 20px;
+}
+
+.panel {
+    background-color: #11222E;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 800px;
+}
+
+.space {
+    height: 10px;
+}
+
+.time {
+    background-color: #1A3140;
+    width: fit-content;
+    padding: 30px 70px;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 100%;
+}
+
+.timegrid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 30px;
+}
+
+.sem {
+    padding: 0 30px 50px 30px;
+}
+
+.num {
+    background-color: #011C2C;
+    font-size: 70px;
+    padding: 5px 0;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    height: fit-content;
+    width: 100%;
+}
+
+.time-num {
+    margin: 0 30px;
+}
+
+.time-label {
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.ctrl-btns {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.btn {
+    background-color: #1A3140;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 0;
+}
+
+.start {
+    background-color: #03AE85;
+    margin-right: 40px;
+}
+
+.stop {
+    background-color: #FD6259;
+}
+
+.mod-area {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mod-title {
+    color: #FFFFFF;
+    font-size: 25px;
+    margin: 10px;
+}
+
+.mod-btns {
+    background-color: #1a3140;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.mod {
+    margin-top: auto;
+    padding: 10px 30px;
+}
+
+.sub {
+    background-color: #FD6259;
+}
+
+.add {
+    background-color: #03AE85;
+}
+
+.mod-contriner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tips{
+    color: #FFFFFF;                       
+    margin-left: 30px;
+    width: fit-content;
+    display: flex;
+}
+
+.tips-title{
+    color: #FFFFFF;
+    font-size: 25px;
+    margin: 10px 0 10px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .panel{
+        margin-top: 0;
+    }
+
+    .time {
+        padding: 0;
+        background-color: #11222e;
+    }
+
+    .mod-title {
+        margin: 10px auto;
+    }
+}
+
+@media only screen and (max-width: 1060px) {
+
+    body {
+        background-color: #11222e;
+    }
+
+    .mod-btns {
+        flex-direction: column;
+    }
+}
