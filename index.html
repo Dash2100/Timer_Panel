@@ -8,28 +8,40 @@
     <meta name="google" content="notranslate">
     <script src="./script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./style.css">
     <title>Control Panel</title>
 </head>
 
 <body>
     <nav class="topnav">
-        <h2 class="nav-title">擎創國際X國聯租賃<br></h2>
+        <h2 class="nav-title">擎創國際 X 國聯租賃<span class="subtitle">計時遙控器</span></h2>
+        <div class="nav-btn">
+            <button class="settings-btn" onclick='setip();'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
+        </div>
     </nav>
 
     <div class="panel">
         <div class="space"></div> <!-- Space -->
         <div class="time">
             <div class="timegrid">
-                <div class="num">
-                    <p id="hour" class="time-num">00</p>
-                </div>
+                <input class="num" id="numberInput" value="00" maxlength="2" type="text" pattern="[0-9]*"
+                    onclick="this.select();" onblur="validateInput(this);"
+                    oninput="if (parseInt(this.value) > 59) this.value = '59'; this.value = this.value.replace(/[^0-9]/g, '');">
                 <div class="sem">
                     <h1>:</h1>
                 </div>
-                <div class="num">
-                    <p id="hour" class="time-num">00</p>
-                </div>
+                <input class="num" id="numberInput" value="00" maxlength="2" type="text" pattern="[0-9]*"
+                    onclick="this.select();" onblur="validateInput(this);"
+                    oninput="if (parseInt(this.value) > 59) this.value = '59'; this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
         </div>
 
@@ -41,35 +53,37 @@
         <div class="mod-contriner">
             <div class="mod-area">
                 <p class="mod-title">Add Time</p>
-                <div class="mod-btns">
-                    <button class="btn mod add">1 sec</button>
-                    <button class="btn mod add">5 sec</button>
-                    <button class="btn mod add">10 sec</button>
-                    <button class="btn mod add">30 sec</button>
-                    <button class="btn mod add">1 min</button>
-                    <button class="btn mod add">5 min</button>
-                    <button class="btn mod add">10 min</button>
-                    <button class="btn mod add">30 min</button>
+                <div class="mod-btns add">
+                    <button class="btn">1 sec</button>
+                    <button class="btn">5 sec</button>
+                    <button class="btn">10 sec</button>
+                    <button class="btn">30 sec</button>
+                    <button class="btn">1 min</button>
+                    <button class="btn">5 min</button>
+                    <button class="btn">10 min</button>
+                    <button class="btn">30 min</button>
                 </div>
             </div>
 
             <div class="mod-area">
                 <p class="mod-title">Sub Time</p>
-                <div class="mod-btns">
-                    <button class="btn mod sub">1 sec</button>
-                    <button class="btn mod sub">5 sec</button>
-                    <button class="btn mod sub">10 sec</button>
-                    <button class="btn mod sub">30 sec</button>
-                    <button class="btn mod sub">1 min</button>
-                    <button class="btn mod sub">5 min</button>
-                    <button class="btn mod sub">10 min</button>
-                    <button class="btn mod sub">30 min</button>
+                <div class="mod-btns sub">
+                    <button class="btn">1 sec</button>
+                    <button class="btn">5 sec</button>
+                    <button class="btn">10 sec</button>
+                    <button class="btn">30 sec</button>
+                    <button class="btn">1 min</button>
+                    <button class="btn">5 min</button>
+                    <button class="btn">10 min</button>
+                    <button class="btn">30 min</button>
                 </div>
             </div>
         </div>
         <div class="tips">
             <p class="tips-title">Start Timer:</p>
+            <div class="key">Space Bar</div>
             <p class="tips-title">Stop Timer:</p>
+            <div class="key">esc</div>
         </div>
     </div>
 

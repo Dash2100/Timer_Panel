@@ -1,4 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+
+/* swal custom */
+.swal2-popup {
+    background-color: #16212e !important;
+    color: aliceblue !important;
+    border-radius: 15px !important;
+    z-index: 999 !important;
+    /* justify-items: center !important; */
+}
+
+.swal2-confirm {
+    border-radius: 5px !important;
+    background-color: #03AE85 !important;
+}
+
+.swal2-cancel {
+    border-radius: 5px !important;
+    background-color: #FD6259 !important;
+}
+
+.swal2-actions {
+    gap: 25px !important;
+}
+
+.swal2-input {
+    background-color: #16212e !important;
+    border-radius: 10px !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.swal2-show {
+    animation: show .15s !important;
+}
+
+.swal2-hide {
+    animation: hide .15s !important;
+}
+
+.swal2-validation-message {
+    background-color: #16212e !important;
+    color: #FFFFFF !important;
+}
+
+.swal2-backdrop-show {
+    background: rgba(0, 0, 0, .6) !important;
+}
+
+
+@keyframes show {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes hide {
+    0% {
+        transform: scale(1);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0
+    }
+}
 
 p,
 h1,
@@ -13,23 +89,39 @@ body {
     margin: 0;
     background-color: #01131E;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input {
+    font-family: 'Roboto Mono', monospace;
 }
 
 .topnav {
+    display: flex;
+    align-items: center;
     background-color: #1A3140;
     font-size: 15px;
     font-weight: bold;
-    padding: 20px 20px;
+    padding: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+}
+
+.nav-btn{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: 15px;
 }
 
 .nav-title {
     color: #FFFFFF;
-    text-align: right;
 }
 
-.subtitle{
+.subtitle {
+    color: #FFFFFF;
     font-size: 20px;
+    margin-left: 16px;
 }
 
 .panel {
@@ -49,7 +141,7 @@ body {
 .time {
     background-color: #1A3140;
     width: fit-content;
-    padding: 30px 70px;
+    padding: 0 70px;
     border-radius: 20px;
     margin: 0 auto;
     margin-top: 30px;
@@ -66,7 +158,7 @@ body {
 }
 
 .sem {
-    padding: 0 30px 50px 30px;
+    padding: 50px 30px;
 }
 
 .num {
@@ -76,7 +168,9 @@ body {
     border-radius: 10px;
     border: 2px solid #FFFFFF;
     height: fit-content;
-    width: 100%;
+    width: 130px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .time-num {
@@ -108,8 +202,16 @@ body {
     margin-right: 40px;
 }
 
+.start:hover {
+    background-color: #028a6a;
+}
+
 .stop {
     background-color: #FD6259;
+}
+
+.stop:hover {
+    background-color: #d84e46;
 }
 
 .mod-area {
@@ -130,46 +232,87 @@ body {
     padding: 20px;
     border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
     gap: 13px;
 }
 
-.mod {
+.add>button {
+    background-color: #8285F8;
     margin-top: auto;
     padding: 10px 30px;
+    white-space: nowrap;
 }
 
-.sub {
-    background-color: #FD6259;
+.add>button:hover {
+    background-color: #6a6dd0;
 }
 
-.add {
-    background-color: #03AE85;
+.sub>button {
+    background-color: #b368cc;
+    margin-top: auto;
+    padding: 10px 30px;
+    white-space: nowrap;
 }
 
-.mod-contriner{
+.sub>button:hover {
+    background-color: #9e5eb8;
+}
+
+.mod-contriner {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-bottom: 60px;
+    /* overflow: hidden; */
 }
 
-.tips{
-    color: #FFFFFF;                       
+.tips {
+    color: #FFFFFF;
     margin-left: 30px;
     width: fit-content;
     display: flex;
 }
 
-.tips-title{
+.tips-title {
     color: #FFFFFF;
-    font-size: 25px;
+    font-size: 20px;
     margin: 10px 0 10px 10px;
 }
 
-@media only screen and (max-width: 600px) {
+.key {
+    background-color: #e2e2e2;
+    color: #000000;
+    height: 20px;
+    padding: 6px 15px;
+    border-radius: 5px;
+    margin: auto 20px auto 10px;
+    border: 1px solid #cccccc;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
 
-    .panel{
+.settings-btn {
+    background-color: #44599c;
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+    transition-duration: .1s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.settings-btn,
+.btn:active {
+    transform: scale(0.95);
+}
+
+@media only screen and (max-width: 800px) {
+    .panel {
         margin-top: 0;
     }
 
@@ -181,6 +324,37 @@ body {
     .mod-title {
         margin: 10px auto;
     }
+
+    .subtitle {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+    .mod-contriner {
+        transform: none !important;
+    }
+
+    .mod-btns {
+        flex-direction: column;
+    }
+
+    /* no button hover background changing */
+
+    .start:hover {
+        background-color: #03AE85;
+    }
+
+    .stop:hover {
+        background-color: #FD6259;
+    }
+
+    .add>button:hover {
+        background-color: #8285F8;
+    }
+
+    .sub>button:hover {
+        background-color: #b368cc;
+    }
 }
 
 @media only screen and (max-width: 1060px) {
@@ -189,7 +363,49 @@ body {
         background-color: #11222e;
     }
 
-    .mod-btns {
-        flex-direction: column;
+    .topnav {
+        font-size: 13px;
+        padding: 15px 20px;
+    }
+
+    .time {
+        margin-top: 0;
+    }
+
+    .tips {
+        display: none;
+    }
+
+    .mod-contriner {
+        transform: scale(0.9);
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .mod-contriner {
+        transform: scale(0.75);
+    }
+}
+
+
+@media only screen and (max-width: 370px) {
+    .panel {
+        width: 100vh;
+        transform: scale(0.6);
+        transform-origin: top left;
+        width: fit-content;
+        margin-left: 30px;
+    }
+
+    .nav-title {
+        font-size: 18px !important;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .nav-btn{
+        right: 0;
     }
 }
