@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     <meta name="google" content="notranslate">
-    <script src="./script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="./style.css">
     <title>Control Panel</title>
+    <!-- sweetalert -->
+    <script src="./src/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="./src/sweetalert2.min.css">
+
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -33,49 +35,49 @@
         <div class="space"></div> <!-- Space -->
         <div class="time">
             <div class="timegrid">
-                <input class="num" id="numberInput" value="00" maxlength="2" type="text" pattern="[0-9]*"
+                <input class="num" id="min" value="00" maxlength="2" type="text" pattern="[0-9]*"
                     onclick="this.select();" onblur="validateInput(this);"
                     oninput="if (parseInt(this.value) > 59) this.value = '59'; this.value = this.value.replace(/[^0-9]/g, '');">
                 <div class="sem">
                     <h1>:</h1>
                 </div>
-                <input class="num" id="numberInput" value="00" maxlength="2" type="text" pattern="[0-9]*"
+                <input class="num" id="sec" value="00" maxlength="2" type="text" pattern="[0-9]*"
                     onclick="this.select();" onblur="validateInput(this);"
                     oninput="if (parseInt(this.value) > 59) this.value = '59'; this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
         </div>
 
         <div class="ctrl-btns">
-            <button class="btn start" id="start">Start</button>
-            <button class="btn stop" id="stop">Stop</button>
+            <button class="btn start" onclick='start();' id="start">Start</button>
+            <button class="btn stop" onclick='stop();' id="stop">Stop</button>
         </div>
 
         <div class="mod-contriner">
             <div class="mod-area">
                 <p class="mod-title">Add Time</p>
                 <div class="mod-btns add">
-                    <button class="btn">1 sec</button>
-                    <button class="btn">5 sec</button>
-                    <button class="btn">10 sec</button>
-                    <button class="btn">30 sec</button>
-                    <button class="btn">1 min</button>
-                    <button class="btn">5 min</button>
-                    <button class="btn">10 min</button>
-                    <button class="btn">30 min</button>
+                    <button class="btn" id="add1" onclick='addtime(1);'>1 sec</button>
+                    <button class="btn" id="add2" onclick='addtime(5);'>5 sec</button>
+                    <button class="btn" id="add3" onclick='addtime(10);'>10 sec</button>
+                    <button class="btn" id="add4" onclick='addtime(30);'>30 sec</button>
+                    <button class="btn" id="add5" onclick='addtime(60);'>1 min</button>
+                    <button class="btn" id="add6" onclick='addtime(300);'>5 min</button>
+                    <button class="btn" id="add7" onclick='addtime(600);'>10 min</button>
+                    <button class="btn" id="add8" onclick='addtime(1800);'>30 min</button>
                 </div>
             </div>
 
             <div class="mod-area">
                 <p class="mod-title">Sub Time</p>
                 <div class="mod-btns sub">
-                    <button class="btn">1 sec</button>
-                    <button class="btn">5 sec</button>
-                    <button class="btn">10 sec</button>
-                    <button class="btn">30 sec</button>
-                    <button class="btn">1 min</button>
-                    <button class="btn">5 min</button>
-                    <button class="btn">10 min</button>
-                    <button class="btn">30 min</button>
+                    <button class="btn" id="sub1" onclick='subtime(1);'>1 sec</button>
+                    <button class="btn" id="sub2" onclick='subtime(5);'>5 sec</button>
+                    <button class="btn" id="sub3" onclick='subtime(10);'>10 sec</button>
+                    <button class="btn" id="sub4" onclick='subtime(30);'>30 sec</button>
+                    <button class="btn" id="sub5" onclick='subtime(60);'>1 min</button>
+                    <button class="btn" id="sub6" onclick='subtime(300);'>5 min</button>
+                    <button class="btn" id="sub7" onclick='subtime(600);'>10 min</button>
+                    <button class="btn" id="sub8" onclick='subtime(1800);'>30 min</button>
                 </div>
             </div>
         </div>
@@ -88,5 +90,89 @@
     </div>
 
 </body>
+<script>
+    function keyFunction() {
+        let charcode = String.fromCharCode(event.keyCode);
+        if (event.keyCode == 32) {
+            console.log("start");
+            start();
+            animateButtonClick("start");
+        } else if (event.keyCode == 27) {
+            stop();
+            animateButtonClick("stop");
+        }
+
+        switch (charcode) {
+            case "Q":
+                addtime(1);
+                animateButtonClick("add1");
+                break;
+            case "W":
+                addtime(5);
+                animateButtonClick("add2");
+                break;
+            case "E":
+                addtime(10);
+                animateButtonClick("add3");
+                break;
+            case "R":
+                addtime(30);
+                animateButtonClick("add4");
+                break;
+            case "T":
+                addtime(60);
+                animateButtonClick("add5");
+                break;
+            case "Y":
+                addtime(300);
+                animateButtonClick("add6");
+                break;
+            case "U":
+                addtime(600);
+                animateButtonClick("add7");
+                break;
+            case "I":
+                addtime(1800);
+                animateButtonClick("add8");
+                break;
+            case "A":
+                subtime(1);
+                animateButtonClick("sub1");
+                break;
+            case "S":
+                subtime(5);
+                animateButtonClick("sub2");
+                break;
+            case "D":
+                subtime(10);
+                animateButtonClick("sub3");
+                break;
+            case "F":
+                subtime(30);
+                animateButtonClick("sub4");
+                break;
+            case "G":
+                subtime(60);
+                animateButtonClick("sub5");
+                break;
+            case "H":
+                subtime(300);
+                animateButtonClick("sub6");
+                break;
+            case "J":
+                subtime(600);
+                animateButtonClick("sub7");
+                break;
+            case "K":
+                subtime(1800);
+                animateButtonClick("sub8");
+                break;
+
+            default:
+                break;
+        }
+    }
+    document.onkeydown = keyFunction;
+</script>
 
 </html>
